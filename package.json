@@ -1,0 +1,50 @@
+{
+  "name": "tsc-alias-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && node ./build.script.mjs && npm run build:types && npm run build:documentation",
+    "build:documentation": "api-extractor run --local && api-documenter markdown --input-folder ./documentation-json --output-folder ./documentation && rimraf documentation-json",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist && tsc-alias",
+    "lint": "eslint src/",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbenson-ff/tsc-alias-bug.git"
+  },
+  "keywords": [],
+  "author": "Gabriel Benson <me@gabe.xyz> (https://gabe.xyz/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbenson-ff/tsc-alias-bug/issues"
+  },
+  "homepage": "https://github.com/gbenson-ff/tsc-alias-bug#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
+    "@gabegabegabe/eslint-config": "^4.1.1",
+    "@gabegabegabe/tsconfig": "^1.0.0",
+    "@microsoft/api-documenter": "^7.15.3",
+    "@microsoft/api-extractor": "^7.19.4",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "browserslist": "^4.19.3",
+    "esbuild": "^0.14.25",
+    "esbuild-plugin-browserslist": "^0.4.5",
+    "eslint": "^8.9.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jest-formatting": "^3.1.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "jest": "^27.5.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
+    "tsc-alias": "^1.6.3"
+  }
+}
